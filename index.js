@@ -14,8 +14,7 @@ const anime = new sqlite3.Database(path.join(__dirname, "data", "anime.db"), err
 process.setMaxListeners(20);
 
 const app = express();
-const port = process.env.PORT || 80;
-const hostname = '192.168.1.7';
+const port = 4000;
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -24,11 +23,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.listen(port, hostname, err => {
+app.listen(port, err => {
     if(err){
         console.log(err.message);
-    }else{
-        console.log(`Started server at http://${hostname}:${port}`);
     }
 });
 
